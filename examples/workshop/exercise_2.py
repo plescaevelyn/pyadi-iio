@@ -60,9 +60,11 @@ print("AD74413R output (DAC) channels:", ad74413r._tx_channel_names)
 
 # EXERCISE 2: Power the RGB LED
 
-colors = ["red", "green", "blue"]
+# ad74413r.channel["voltage0"].raw controls red
+# ad74413r.channel["voltage1"].raw controls green
+# ad74413r.channel["voltage2"].raw controls blue
 
-# Set LED to red, green and blue color
+# Set LED to red, green and blue color 
 # Your code goes here
 
 
