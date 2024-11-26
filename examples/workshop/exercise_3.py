@@ -64,13 +64,10 @@ voltage_dac_scale = ad74413r.channel["voltage0"].scale
 voltage_dac_offset = ad74413r.channel["voltage0"].offset
 
 while True:
-    for channels in ad74413r._rx_channel_names:
-        # Get the potentiometer's resistance value in Ohms
-        resistance = ad74413r.channel["resistance3"].processed / 10000
-        red_channel_val = (resistance / 11000) * AD74413R_DAC_MAX_CODE
+    # Get the potentiometer's resistance value in Ohms
+    resistance = ad74413r.channel["resistance3"].processed / 1000
+    red_channel_val = (resistance / 11000) * AD74413R_DAC_MAX_CODE
         
-        # Your code goes here
-        # Assign the value of potentiometer value to the adc channel (ad74413r.channel["voltage0"].raw)
-
-
+    # Your code goes here
+    # Assign the value of potentiometer value to the adc channel (ad74413r.channel["voltage0"].raw)
 
