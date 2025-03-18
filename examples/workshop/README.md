@@ -4,7 +4,7 @@ On a linux environment:
 
 ## Installation
 
-git clone (https://github.com/constmonica/pyadi-iio/) to clone the repository
+git clone https://github.com/constmonica/pyadi-iio to clone the repository
 
 ```bash
 cd pyadi-iio
