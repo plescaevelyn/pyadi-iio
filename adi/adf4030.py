@@ -10,18 +10,25 @@ from adi.context_manager import context_manager
 
 
 class adf4030(context_manager, attribute):
-    """This class provides an interface to the ADF4030 device via the IIO framework.
+    """
+    This class provides an interface to the ADF4030 device via the IIO framework.
+
     Args:
         uri (str, optional): URI of the IIO context. Defaults to "".
+
     Attributes:
         _device_name (str): Name of the IIO device ("adf4030").
         _ctrl: Reference to the IIO device controller.
         _attrs (list): List of supported channel attributes.
+
     Properties:
         in_temp0_input (float): Returns the temperature sensor input value.
+
     Dynamic Channel Properties:
-        For each channel with an ID starting with "altvoltage", the following properties are dynamically created
-        (where <name> is the channel label or ID):
+        For each channel with an ID starting with "altvoltage", the following
+        properties are dynamically created (where <name> is the channel label
+        or ID):
+
             <name>_duty_cycle (float): Duty cycle of the channel.
             <name>_frequency (float): Frequency of the channel.
             <name>_label (str): Label of the channel.
@@ -34,8 +41,10 @@ class adf4030(context_manager, attribute):
             <name>_background_serial_alignment_en (bool): Enable/disable background serial alignment.
             <name>_oversampling_ratio (int): Oversampling ratio.
             <name>_oversampling_ratio_available (list): List of available oversampling ratios.
+
     Raises:
         Exception: If the ADF4030 device is not found in the IIO context.
+
     Methods:
         _make_channel_property(channel, attr): Creates a property for a given channel and attribute.
         _add_channel_properties(): Adds dynamic properties for each supported channel and attribute.
