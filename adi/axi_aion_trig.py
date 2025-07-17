@@ -11,8 +11,8 @@ from adi.context_manager import context_manager
 class axi_aion_trig(context_manager, attribute):
     """axi_aion_trig IIO Device Interface
 
-    This class provides an interface to the 'axi_aion_trig' IIO device, allowing control and monitoring
-    of its voltage channels and associated attributes.
+    This class provides an interface to the 'axi_aion_trig' IIO device, allowing
+    control and monitoring of its voltage channels and associated attributes.
 
     Parameters
     ----------
@@ -20,8 +20,9 @@ class axi_aion_trig(context_manager, attribute):
         URI of the IIO context to connect to. Defaults to an empty string.
 
     Attributes (per voltage channel)
-    -------------------------------
-    For each voltage channel (e.g., voltage0, voltage1, ...), the following properties are dynamically created:
+    --------------------------------
+    For each voltage channel (e.g., voltage0, voltage1, ...), the following
+    properties are dynamically created:
 
     - trig{N}_en : bool
         Enable or disable the trigger for channel N.
