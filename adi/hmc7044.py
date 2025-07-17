@@ -10,9 +10,13 @@ from adi.context_manager import context_manager
 
 
 class hmc7044(context_manager, attribute):
-    """hmc7044 IIO Device Interface
-    This class provides a Python interface for interacting with the HMC7044 device via the Industrial I/O (IIO) framework.
-    It allows users to access and modify device and channel attributes, as well as perform device-specific operations.
+    """
+    hmc7044 IIO Device Interface
+    This class provides a Python interface for interacting with the HMC7044
+    device via the Industrial I/O (IIO) framework.
+    It allows users to access and modify device and channel attributes, as well
+    as perform device-specific operations.
+
     Attributes:
         mute_request (str): Get or set the mute request state of the device.
         reseed_request (str): Get or set the reseed request state of the device.
@@ -22,14 +26,18 @@ class hmc7044(context_manager, attribute):
         sync_pin_mode_available (str): Get the available synchronization pin modes.
         sysref_request (str): Get or set the SYSREF request state of the device.
         status (str): Get the debug status of the device.
+
     Channel Attributes (dynamically added per channel):
         <channel_label>_frequency (int): Get or set the frequency for the specified channel.
         <channel_label>_label (str): Get or set the label for the specified channel.
         <channel_label>_phase (int): Get or set the phase for the specified channel.
+
     Args:
         uri (str, optional): URI of the IIO context. Defaults to "".
+
     Raises:
         Exception: If the HMC7044 device is not found in the IIO context.
+
     Usage Example:
         dev = hmc7044("ip:192.168.2.1")
         print(dev.status)
