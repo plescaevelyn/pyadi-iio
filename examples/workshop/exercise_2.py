@@ -6,7 +6,7 @@ import time
 
 AD74413R_DAC_MAX_CODE = 8192
 
-dev_uri = "ip:169.254.97.40"
+dev_uri = "ip:192.168.97.40"
 
 """
 	Possible values:
