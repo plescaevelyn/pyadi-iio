@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Python Module Index &#8212; Analog Devices Hardware Python Interfaces 0.0.21 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=a525f648" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=833c9372" />
     <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=632a43e7" />
-    <script async="async" src="_static/app.umd.js?v=fcf3088a"></script>
+    <script async="async" src="_static/app.umd.js?v=f78f54ff"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
     <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
 
@@ -443,7 +443,8 @@ mermaid.initialize(
     }
 );
 
-window.addEventListener("load", load);</script>
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
     <link rel="icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -501,7 +502,7 @@ window.addEventListener("load", load);</script>
         <a id="logo-org" href="https://analog.com" aria-label="Analog Devices Inc. landing page"></a>
         <div class="vertical-divider"></div>
         
-        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs" tabindex="0">Docs</label>
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Docs</label>
         
         <a id="logo" href="index.html">
           <div>pyadi-iio</div>
@@ -551,14 +552,14 @@ Content on this topic
 
 </div>
 <div class="toc-tree">
-  <html>
-  <body><ul>
+  <ul>
 <li class="toctree-l1"><a class="reference internal" href="guides/quick.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attr/index.html">Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/connectivity.html">Connectivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="buffers/index.html">Buffers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fpga/index.html">FPGA Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcp/index.html">MCP Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libiio.html">libiio Direct Access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 <li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1"/><div class="collapse"><a class="reference internal" href="dev/index.html">Developers</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul>
@@ -566,6 +567,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="dev/test_dma.html">DMA Tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev/test_generics.html">Generic Tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev/test_jesd.html">JESD204 Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/device_base.html">Device Base Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2" id="toctree-collapse-2"/><div class="collapse"><a class="reference internal" href="devices/index.html">Supported Devices</a><label for="toctree-collapse-2"><div class="icon"></div></label></div><ul>
@@ -582,6 +584,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad4170.html">ad4170</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad4630.html">ad4630</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad469x.html">ad469x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ad514x.html">ad514x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5592r.html">ad5592r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5627.html">ad5627</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5686.html">ad5686</a></li>
@@ -630,6 +633,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad4858.html">ad4858</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad9739a.html">adi.ad9739a module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ada4355.html">ada4355</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ada4356_lidar.html">ada4356_lidar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ada4961.html">adi.ada4961 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adaq8092.html">adaq8092</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adar1000.html">adar1000</a></li>
@@ -657,6 +661,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adis16550.html">adis16550</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adl5240.html">adi.adl5240 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adl5960.html">adl5960</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.adl8113.html">adl8113</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.admv8818.html">admv8818</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adpd1080.html">adpd1080</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adpd188.html">adpd188</a></li>
@@ -714,8 +719,7 @@ Content on this topic
 </ul>
 </li>
 </ul>
-</body>
-</html>
+
 
 </div>
         </div>
@@ -755,11 +759,6 @@ Content on this topic
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad353xr.html#module-adi.ad353xr"><code class="xref">adi.ad353xr</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="devices/adi.ad3552r.html#module-adi.ad3552r"><code class="xref">adi.ad3552r</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -770,32 +769,7 @@ Content on this topic
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad4020.html#module-adi.ad4020"><code class="xref">adi.ad4020</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="devices/adi.ad405x.html#module-adi.ad405x"><code class="xref">adi.ad405x</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad4080.html#module-adi.ad4080"><code class="xref">adi.ad4080</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad4110.html#module-adi.ad4110"><code class="xref">adi.ad4110</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad4130.html#module-adi.ad4130"><code class="xref">adi.ad4130</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad4170.html#module-adi.ad4170"><code class="xref">adi.ad4170</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -811,6 +785,11 @@ Content on this topic
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="devices/adi.ad4858.html#module-adi.ad4858"><code class="xref">adi.ad4858</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="devices/adi.ad514x.html#module-adi.ad514x"><code class="xref">adi.ad514x</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -840,16 +819,6 @@ Content on this topic
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad5754r.html#module-adi.ad5754r"><code class="xref">adi.ad5754r</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad579x.html#module-adi.ad579x"><code class="xref">adi.ad579x</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="devices/adi.ad5940.html#module-adi.ad5940"><code class="xref">adi.ad5940</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -865,32 +834,7 @@ Content on this topic
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad7124.html#module-adi.ad7124"><code class="xref">adi.ad7124</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad7134.html#module-adi.ad7134"><code class="xref">adi.ad7134</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad717x.html#module-adi.ad717x"><code class="xref">adi.ad717x</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad719x.html#module-adi.ad719x"><code class="xref">adi.ad719x</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="devices/adi.ad7291.html#module-adi.ad7291"><code class="xref">adi.ad7291</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="devices/adi.ad738x.html#module-adi.ad738x"><code class="xref">adi.ad738x</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -1050,6 +994,11 @@ Content on this topic
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="devices/adi.ada4356_lidar.html#module-adi.ada4356_lidar"><code class="xref">adi.ada4356_lidar</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="devices/adi.ada4961.html#module-adi.ada4961"><code class="xref">adi.ada4961</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -1121,6 +1070,11 @@ Content on this topic
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="devices/adi.adl5960.html#module-adi.adl5960"><code class="xref">adi.adl5960</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="devices/adi.adl8113.html#module-adi.adl8113"><code class="xref">adi.adl8113</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -1381,6 +1335,11 @@ Content on this topic
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="devices/adi.max9611.html#module-adi.max9611"><code class="xref">adi.max9611</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="mcp/index.html#module-adi.mcp_server"><code class="xref">adi.mcp_server</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
