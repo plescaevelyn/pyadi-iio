@@ -7,7 +7,7 @@
     ROS2 Hello World demo using ADALM-LSMSPG eval board.
     Demonstrates IIO-based DAC servo commands with ADC feedback.
   </description>
-  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <maintainer email="evelyn-iulia.plesca@analog.com">Evelyn Plesca</maintainer>
   <license>ADIBSD</license>
 
   <depend>rclpy</depend>

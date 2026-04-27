@@ -1,17 +1,18 @@
 # ADALM-LSMSPG ROS2 Servo Demo
 
-A "Hello, World!" style ROS2 example demonstrating IIO + ADI hardware integration.
-This package simulates servo motor control for a robotic arm using the AD5592r
-DAC/ADC channels on the ADALM-LSMSPG evaluation board.
+A minimal ROS2 example showing how to integrate ADI hardware with robotics applications.
+Uses the AD5592r DAC/ADC on the ADALM-LSMSPG to drive a servo motor and read sensor feedback.
 
 ## What This Demo Does
 
-- **servo_commander**: Generates sinusoidal position commands (like moving a robotic
-  arm joint), outputs corresponding voltages via DAC channel 0
-- **servo_feedback**: Reads ADC channels to simulate position encoder and current
-  sensor feedback, publishes ROS2 JointState messages
+This demo implements the basic control loop pattern used in robotics:
 
-This demonstrates the fundamental pattern for robotics: command output + sensor feedback.
+1. **servo_commander** generates a smooth sweeping motion (0-180 degrees) and outputs
+   the corresponding voltage to DAC channel 0 — as if commanding a servo motor position
+2. **servo_feedback** reads ADC channels to measure position and current, then publishes
+   standard ROS2 `JointState` messages that any robotics tool can consume
+
+Think of it as the "Hello World" for connecting real analog hardware to the ROS2 ecosystem.
 
 ## Hardware Setup
 
@@ -29,9 +30,12 @@ iio_info -u local:
 
 ## ROS2 Installation on Raspberry Pi 5 (Kuiper Linux 2)
 
-Kuiper Linux 2 is based on Debian Bookworm. ROS2 Jazzy (LTS) is the recommended version.
+Kuiper Linux 2 is based on Debian Trixie. ROS2 Jazzy (LTS) must be built from source
+since official ROS2 packages are only available for Ubuntu.
 
-### Option 1: Install from ROS2 Debian Packages (Recommended)
+### Build ROS2 Jazzy from Source
+
+This process takes 2-3 hours on a Raspberry Pi 5.
 
 ```bash
 # 1. Set locale
@@ -40,35 +44,53 @@ sudo locale-gen en_US en_US.UTF-8
 sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# 2. Add ROS2 apt repository
-sudo apt install -y software-properties-common curl
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu jammy main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+# 2. Install build dependencies
+sudo apt install -y \
+    python3-pip \
+    python3-rosdep \
+    python3-colcon-common-extensions \
+    python3-vcstool \
+    python3-sipbuild \
+    sip-tools \
+    git \
+    curl
 
-# 3. Install ROS2 Jazzy (base is sufficient, desktop adds visualization tools)
-sudo apt update
-sudo apt install -y ros-jazzy-ros-base python3-colcon-common-extensions
+# 3. Install X11/graphics development libraries (required for rviz)
+sudo apt install -y \
+    libxrandr-dev \
+    libfreetype-dev \
+    libxt-dev \
+    libxaw7-dev
 
-# 4. Source ROS2 setup (add to ~/.bashrc for persistence)
-echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
-source /opt/ros/jazzy/setup.bash
-```
+# 4. Add swap space (Pi 5 needs extra memory for compilation)
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
 
-### Option 2: Build from Source (if packages unavailable)
+# 5. Initialize rosdep
+sudo rosdep init
+rosdep update
 
-```bash
-# Install build dependencies
-sudo apt install -y python3-rosdep python3-colcon-common-extensions python3-vcstool
-
-# Create workspace and fetch sources
+# 6. Create workspace and fetch ROS2 Jazzy sources
 mkdir -p ~/ros2_jazzy/src && cd ~/ros2_jazzy
-vcs import src < https://raw.githubusercontent.com/ros2/ros2/jazzy/ros2.repos
+curl -sSL https://raw.githubusercontent.com/ros2/ros2/jazzy/ros2.repos | vcs import src
 
-# Install dependencies and build (takes 1-2 hours on Pi 5)
-sudo rosdep init && rosdep update
-rosdep install --from-paths src --ignore-src -y
-colcon build --symlink-install
+# 7. Install ROS2 dependencies (skip packages unavailable on Debian Trixie)
+rosdep install --from-paths src --ignore-src -y \
+    --rosdistro jazzy \
+    --skip-keys "rti-connext-dds-6.0.1 urdfdom_headers python3-sip-dev"
+
+# 8. Build ROS2 (use --parallel-workers 1 to avoid out-of-memory errors)
+colcon build --symlink-install --parallel-workers 1
+
+# 9. Source ROS2 setup (add to ~/.bashrc for persistence)
+echo "source ~/ros2_jazzy/install/setup.bash" >> ~/.bashrc
+source ~/ros2_jazzy/install/setup.bash
 ```
+
+**Note:** If a package fails to build due to missing dependencies, install them and re-run
+`colcon build` - it will continue from where it left off.
 
 ### Install pyadi-iio
 
