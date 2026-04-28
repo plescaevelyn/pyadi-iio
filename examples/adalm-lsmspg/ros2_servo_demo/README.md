@@ -125,13 +125,13 @@ source install/setup.bash
 ### Terminal 1: Start the Servo Commander
 ```bash
 source ~/ros2_ws/install/setup.bash
-ros2 run adalm_lsmspg_servo_demo servo_commander --ros-args -p uri:="local:"
+ros2 run adalm_lsmspg_servo_demo servo_commander --ros-args -p uri:="'local:'"
 ```
 
 ### Terminal 2: Start the Feedback Reader
 ```bash
 source ~/ros2_ws/install/setup.bash
-ros2 run adalm_lsmspg_servo_demo servo_feedback --ros-args -p uri:="local:"
+ros2 run adalm_lsmspg_servo_demo servo_feedback --ros-args -p uri:="'local:'"
 ```
 
 ### Terminal 3: Monitor Topics
@@ -165,7 +165,7 @@ ros2 topic echo /servo/joint_state
 Example with custom parameters:
 ```bash
 ros2 run adalm_lsmspg_servo_demo servo_commander \
-    --ros-args -p uri:="local:" -p sweep_rate_hz:=0.5 -p max_angle:=90.0
+    --ros-args -p uri:="'local:'" -p sweep_rate_hz:=0.5 -p max_angle:=90.0
 ```
 
 ## ROS2 Topics
@@ -183,7 +183,7 @@ If you want to visualize on your PC while running on the Pi:
 ```bash
 # On Pi (set ROS_DOMAIN_ID to match)
 export ROS_DOMAIN_ID=42
-ros2 run adalm_lsmspg_servo_demo servo_commander --ros-args -p uri:="local:"
+ros2 run adalm_lsmspg_servo_demo servo_commander --ros-args -p uri:="'local:'"
 
 # On your PC (same domain ID)
 export ROS_DOMAIN_ID=42
@@ -207,3 +207,8 @@ sudo chmod 666 /dev/iio*
 **ROS2 nodes can't find each other:**
 - Ensure both use the same `ROS_DOMAIN_ID`
 - Check firewall isn't blocking UDP multicast
+
+**"Failed to parse global arguments" or "Couldn't parse parameter override rule":**
+- URIs containing colons (like `local:` or `ip:host`) need extra quoting for ROS2's YAML parser
+- Use single quotes inside double quotes: `-p uri:="'local:'"`
+- Or use a params file instead of command-line parameters
